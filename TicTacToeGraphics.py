@@ -4,8 +4,8 @@ import sys
 
 
 class TicTacToe(QGraphicsItem):
-    num_lines = 35  # количество строк
-    num_column = 35  # количество столбцов
+    num_lines = 50  # количество строк
+    num_column = 50  # количество столбцов
     param_x = 600 // num_lines
     param_y = 600 // num_column
 
@@ -48,10 +48,11 @@ class TicTacToe(QGraphicsItem):
                           int(self.param_y / 2) + y * self.param_y)
                 elif self.board[x][y] == self.symbol_Human:
                     painter.setPen(Qt.blue)
-                    painter.drawLine(x * self.param_x, y * self.param_y,
-                                     int(self.param_x) + x * self.param_x, int(self.param_y) + y * self.param_y)
-                    painter.drawLine(int(self.param_x) + x * self.param_x, y * self.param_y,
-                                     x * self.param_x, int(self.param_y) + y * self.param_y)
+                    painter.drawLine(x * self.param_x + 2, y * self.param_y + 2,
+                                     int(self.param_x) - 2 + x * self.param_x,
+                                     int(self.param_y) - 2 + y * self.param_y)
+                    painter.drawLine(int(self.param_x) - 2 + x * self.param_x, y * self.param_y + 2,
+                                     x * self.param_x + 2, int(self.param_y) - 2 + y * self.param_y)
 
     def boundingRect(self):  # функция определяет внешние границы прямоугольника
         return QRectF(0, 0, 600, 600)  # возвращает прямоугольник на плоскости
